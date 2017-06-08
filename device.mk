@@ -34,6 +34,10 @@ PRODUCT_PACKAGES += \
     audio.primary.universal5422 \
     libtinycompress
 
+# Audio
+PRODUCT_PROPERTY_OVERRIDES += \
+     audio_hal.force_voice_config=wide
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/mixer_paths_0.xml:system/etc/mixer_paths_0.xml \
     $(LOCAL_PATH)/configs/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
@@ -77,7 +81,7 @@ PRODUCT_COPY_FILES += \
 # if the xhdpi doesn't exist.
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
-PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi 
+PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
 
 # HW composer
 PRODUCT_PACKAGES += \
@@ -160,7 +164,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
 	frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml \
     frameworks/native/data/etc/android.software.freeform_window_management.xml:system/etc/permissions/android.software.freeform_window_management.xml
-	
+
 # Browser
 PRODUCT_PACKAGES += \
     Gello
@@ -172,7 +176,7 @@ PRODUCT_COPY_FILES += \
 # Power
 PRODUCT_PACKAGES += \
     power.universal5422
-	
+
 PRODUCT_PACKAGES += \
     charger_res_images \
     charger
@@ -218,7 +222,6 @@ PRODUCT_PACKAGES += \
 
 # WIFI
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     $(LOCAL_PATH)/configs/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
     $(LOCAL_PATH)/configs/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
 
@@ -237,10 +240,12 @@ PRODUCT_PACKAGES += \
     fingerprint.universal5422 \
     ValidityService
 
-# Widevine
+###########################################################
+### Samsung Shimlibs
+###########################################################
 PRODUCT_PACKAGES += \
-   libwvm_shim \
-   libshim_gpsd
+	libshim_gpsd \
+	libshim_wvm 
 
 # Enable multi-window by default
 PRODUCT_PROPERTY_OVERRIDES += \
