@@ -4,6 +4,7 @@
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.bq.gpu_to_cpu_unsupported=1\
+	ro.sf.lcd_density=480 \
 	debug.hwc.force_gpu=1 \
 	debug.hwc.winupdate=1 \
 	debug.hwc.otf=1 
