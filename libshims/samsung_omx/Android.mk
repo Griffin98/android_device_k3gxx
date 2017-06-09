@@ -1,5 +1,4 @@
-#
-# Copyright (C) 2016 The LineageOS Project
+# Copyright (C) 2016 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,15 +11,15 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_SRC_FILES := wvm_shim.cpp
-LOCAL_SHARED_LIBRARIES := libstagefright_foundation libmedia
-LOCAL_MODULE := libshim_wvm
+LOCAL_SHARED_LIBRARIES := libgui liblog libutils libbinder libui
+LOCAL_SRC_FILES := samsung_omx.cpp
+LOCAL_MODULE := libshim_samsung_omx
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
+
