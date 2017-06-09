@@ -55,24 +55,22 @@ TARGET_SCREEN_WIDTH := 1080
 
 # Camera
 PRODUCT_PACKAGES += \
-    libhwjpeg
-
-# Shims/Samsung symbols
-PRODUCT_PACKAGES += \
-    libsamsung_symbols
+    libhwjpeg \
+    libshim_camera    
 
 # Display
 PRODUCT_PACKAGES += \
     SamsungServiceMode
 
 # GPS
-PRODUCT_PACKAGES += \
-    libdmitry
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps/gps.cer:system/bin/gps.cer \
     $(LOCAL_PATH)/configs/gps/gps.conf:system/etc/gps.conf \
     $(LOCAL_PATH)/configs/gps/gps.xml:system/etc/gps.xml
+
+PRODUCT_PACKAGES += \
+    libshim_gpsd    
 
 # GRAPHICS
 # This device is xhdpi.  However the platform doesn't
@@ -241,10 +239,9 @@ PRODUCT_PACKAGES += \
     ValidityService
 
 ###########################################################
-### Samsung Shimlibs
+### WVM
 ###########################################################
 PRODUCT_PACKAGES += \
-	libshim_gpsd \
 	libshim_wvm 
 
 # Enable multi-window by default
@@ -265,6 +262,10 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.debuggable=1 \
     persist.service.adb.enable=1 \
     persist.sys.isUsbOtgEnabled=true
+    
+# omx 
+PRODUCT_PACKAGES += \
+    libshim_samsung_omx
 
 # adb and apps
 ADDITIONAL_BUILD_PROPERTIES += \
