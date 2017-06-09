@@ -7,7 +7,7 @@ on early-init
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
 on init
-    export LD_SHIM_LIBS "/system/vendor/lib/libwvm.so|libshim_wvm.so:/system/bin/gpsd|libshim_gpsd.so:/system/lib/omx/libOMX.Exynos.AVC.Encoder.so|libshim_samsung_omx.so"
+    export LD_SHIM_LIBS "/system/vendor/lib/libwvm.so|libshim_wvm.so:/system/bin/gpsd|libshim_gpsd.so:/system/lib/omx/libOMX.Exynos.AVC.Encoder.so|libshim_samsung_omx.so:/system/lib/libexynoscamera.so|libshim_camera.so"
     mkdir /preload 0771 system system
 
 # RIL <-> audioserver comm
