@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 The LineageOS Project
+ * Copyright (C) 2016 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,5 +14,50 @@
  * limitations under the License.
  */
 
+#include <stdint.h>
+#include <signal.h>
+
+#include <media/stagefright/MediaBuffer.h>
+
+extern "C" {
+
 /* MediaBufferGroup::MediaBufferGroup */
-extern "C" void _ZN7android16MediaBufferGroupC1Ev() { }
+int _ZN7android16MediaBufferGroupC1Ej(size_t growthLimit);
+size_t _ZN7android16MediaBufferGroup14acquire_bufferEPPNS_11MediaBufferEbj(android::MediaBuffer **buffer, bool nonBlock, size_t reqSize);
+bool _ZNK7android12IMediaSource11ReadOptions9getSeekToEPxPNS1_8SeekModeE(int64_t *time_us, int32_t *mode);
+int64_t _ZNK7android12IMediaSource11ReadOptions9getLateByEv(void);
+bool _ZNK7android12IMediaSource11ReadOptions14getNonBlockingEv(void);
+
+/* libstatefright_foundation */
+int _ZN7android16MediaBufferGroupC1Ev(void)
+{
+    return _ZN7android16MediaBufferGroupC1Ej(0); /* default: growthLimit = 0 */
+}
+
+size_t _ZN7android16MediaBufferGroup14acquire_bufferEPPNS_11MediaBufferEb(android::MediaBuffer **buffer, bool nonBlock, size_t reqSize)
+{
+    return _ZN7android16MediaBufferGroup14acquire_bufferEPPNS_11MediaBufferEbj(buffer, nonBlock, reqSize);
+}
+
+/* libmedia */
+bool _ZNK7android11MediaSource11ReadOptions9getSeekToEPxPNS1_8SeekModeE(int64_t *time_us, int32_t *mode)
+{
+    return _ZNK7android12IMediaSource11ReadOptions9getSeekToEPxPNS1_8SeekModeE(time_us, mode);
+}
+
+int64_t _ZNK7android11MediaSource11ReadOptions9getLateByEv(void)
+{
+    return _ZNK7android12IMediaSource11ReadOptions9getLateByEv();
+}
+
+bool _ZNK7android11MediaSource11ReadOptions14getNonBlockingEv(void)
+{
+    return _ZNK7android12IMediaSource11ReadOptions14getNonBlockingEv();
+}
+
+sighandler_t bsd_signal(int signum, sighandler_t handler)
+{
+    return signal(signum, handler);
+}
+
+} /* extern */
